@@ -1,10 +1,10 @@
-# Usa la variante slim de Python 3.11
+# 1) Base image
 FROM python:3.11-slim
 
-# Directorio de trabajo dentro del contenedor
+# 2) Directorio de trabajo
 WORKDIR /app
 
-# Instalamos librerías del sistema necesarias para psycopg2 y mysqlclient
+# 3) Dependencias del sistema (psycopg2, mysqlclient…)
 RUN apt-get update && apt-get install -y \
     gcc \
     default-libmysqlclient-dev \
@@ -13,24 +13,22 @@ RUN apt-get update && apt-get install -y \
     build-essential \
   && rm -rf /var/lib/apt/lists/*
 
-# Copiamos el archivo de dependencias y lo instalamos
-COPY requirements.txt ./
+# 4) Copiamos requirements e instalamos
+COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copiamos el resto de tu código
+# 5) Copiamos TODO el código de tu proyecto
 COPY . .
 
-# Variables de entorno para Flask
-ENV FLASK_APP=manage.py
+# 6) Variables de entorno para que Flask encuentre tu app
+#    - manage:app  => módulo manage.py y variable app dentro
+ENV FLASK_APP=manage:app
 ENV FLASK_ENV=production
 
-# Railway (y otras plataformas) inyectan el puerto en $PORT
-# Si no existe, cae al 5000 por defecto
+# 7) Puerto dinámico (Railway lo inyecta en $PORT)
 ENV PORT=${PORT:-5000}
-
-# Exponemos el puerto configurado
 EXPOSE ${PORT}
 
-# Arrancamos el servidor de Flask en el puerto dinámico
-# Usamos shell form para que $PORT se expanda correctamente
+# 8) Arrancamos Flask en producción, host y puerto dinámico
+#    Usamos shell form para que expanda $PORT
 ENTRYPOINT flask run --host=0.0.0.0 --port=$PORT
