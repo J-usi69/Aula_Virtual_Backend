@@ -1,10 +1,10 @@
-# Usa la imagen oficial de Python en su variante slim
+# Usa la variante slim de Python 3.11
 FROM python:3.11-slim
 
-# Directorio de trabajo
+# Directorio de trabajo dentro del contenedor
 WORKDIR /app
 
-# Instalamos dependencias del sistema necesarias para psycopg2, mysqlclient, etc.
+# Instalamos librerías del sistema necesarias para psycopg2 y mysqlclient
 RUN apt-get update && apt-get install -y \
     gcc \
     default-libmysqlclient-dev \
@@ -13,21 +13,24 @@ RUN apt-get update && apt-get install -y \
     build-essential \
   && rm -rf /var/lib/apt/lists/*
 
-# Copiamos el requirements e instalamos las dependencias de Python
+# Copiamos el archivo de dependencias y lo instalamos
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copiamos el resto del código
+# Copiamos el resto de tu código
 COPY . .
 
-# Definimos variables de entorno para producción
+# Variables de entorno para Flask
 ENV FLASK_APP=manage.py
 ENV FLASK_ENV=production
-# Railway inyecta el puerto en $PORT; usamos 5000 por defecto si no existe
+
+# Railway (y otras plataformas) inyectan el puerto en $PORT
+# Si no existe, cae al 5000 por defecto
 ENV PORT=${PORT:-5000}
 
-# Exponemos el puerto de la aplicación
+# Exponemos el puerto configurado
 EXPOSE ${PORT}
 
-# Arrancamos con Gunicorn vinculando al puerto dinámico
-CMD ["gunicorn", "manage:app", "--bind", "0.0.0.0:${PORT}", "--workers", "3"]
+# Arrancamos el servidor de Flask en el puerto dinámico
+# Usamos shell form para que $PORT se expanda correctamente
+ENTRYPOINT flask run --host=0.0.0.0 --port=$PORT
