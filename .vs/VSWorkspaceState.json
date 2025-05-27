@@ -2,7 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\app",
+    "\\app\\routes",
+    "\\app\\seeders",
     "\\migrations"
   ],
+  "SelectedNode": "\\.gitignore",
   "PreviewInSolutionExplorer": false
 }

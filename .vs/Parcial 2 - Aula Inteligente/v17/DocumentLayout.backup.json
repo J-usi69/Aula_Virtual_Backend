@@ -72,7 +72,7 @@
               "RelativeDocumentMoniker": "docker-compose.yml",
               "ToolTip": "D:\\Antonio\\SI2\\Parcial 2 - Aula Inteligente\\docker-compose.yml",
               "RelativeToolTip": "docker-compose.yml",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAABsAAAAdAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
               "WhenOpened": "2025-05-26T18:05:28.072Z",
               "EditorCaption": ""
@@ -147,8 +147,7 @@
               "RelativeToolTip": ".env",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-05-26T17:50:39.232Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-26T17:50:39.232Z"
             },
             {
               "$type": "Document",
