@@ -1,11 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\app",
-    "\\app\\routes",
-    "\\app\\seeders",
-    "\\migrations"
+    "\\app"
   ],
-  "SelectedNode": "\\.gitignore",
+  "SelectedNode": "\\requirements.txt",
   "PreviewInSolutionExplorer": false
 }
