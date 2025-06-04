@@ -295,10 +295,7 @@ def eliminar_nota(nota_id):
     except Exception as e:
         db.session.rollback()
         return jsonify({"error": str(e)}), 500
-<<<<<<< HEAD
-=======
-
-
+    
 @gestion_notas_bp.route('/lista/g_c_p/<int:gestion_curso_paralelo_id>/m_p/<int:materia_profesor_id>', methods=['GET'])
 def obtener_lista_estudiantes_con_nota(gestion_curso_paralelo_id, materia_profesor_id):
     try:
