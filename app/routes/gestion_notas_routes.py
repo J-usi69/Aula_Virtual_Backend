@@ -330,6 +330,4 @@ def obtener_lista_estudiantes_con_nota(gestion_curso_paralelo_id, materia_profes
         }), 200
 
     except Exception as e:
-        return jsonify({"error": str(e)}), 500
-
->>>>>>> upstream/main
+        return jsonify({"error": str(e)}), 500  

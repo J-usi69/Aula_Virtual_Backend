@@ -31,7 +31,7 @@ def seed_users():
                 "email": "ballivian02@gmail.com",
                 "password": "123456789",
                 "status": True,
-                "rol_id": 1
+                "rol_id": 4
             },
             {
                 "name": "Antonio Bravo Vieira",
@@ -45,14 +45,14 @@ def seed_users():
                 "email": "helendiyhana03@gmail.com",
                 "password": "123456789",
                 "status": False,
-                "rol_id": 1
+                "rol_id": 3
             },
             {
                 "name": "Briyidt Araceli",
-                "email": "Araceli@mail.com",
+                "email": "Araceli@gmail.com",
                 "password": "123456",
                 "status": True,
-                "rol_id": 3
+                "rol_id": 2
             }
         ]
 
